@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Hello World Window</title>
+<link rel="stylesheet" type="text/css" href="ext-all-gray.css" />
+
+<script type="text/javascript" src="ext-all-debug.js"></script>
+
+</head>
+
+<body>
+<script type="text/javascript">
+var Grid1Store = new Ext.data.Store({
+      root: 'users',
+      fields: [ 'id', 'name', 'email' ],
+      autoLoad: true,
+      data: { "users": [
+        {
+            "id": 1,
+            "name": "Ed Spencer",
+            "email": "ed@senchas.com"
+        },
+        {
+            "id": 2,
+            "name": "Abe Elias",
+            "email": "abe@senchas.com"
+        }
+    ]
+	  }
+    });   
+
+           var onReadyFunction = function(){
+
+              var grid = new Ext.grid.Panel({
+          renderTo: Ext.getBody(),
+		  
+          frame: true,
+          title: 'Database',
+          width:500,
+          height:600,  
+		  layout:'column',
+          store: Grid1Store,
+              columns: [
+                  {header: 'ID', dataIndex: 'id'},
+                  {header: 'NAME', dataIndex: 'name'},
+                  {header: 'EMAIL', dataIndex: 'email'}
+              ]
+                      });
+
+      }
+     Ext.create('Ext.grid.Panel', {
+        title: 'Users',
+        height: 200,
+        width: 400,
+        store: Grid1Store,
+columns:  [{
+header: 'ID',
+dataIndex: 'id'
+}, {
+header: 'NAME',
+dataIndex: 'name'
+}, {
+header: 'Email',
+dataIndex: 'email'
+}]
+                     // }),
+       , renderTo: Ext.getBody()
+    });
+      Ext.onReady(onReadyFunction);
+	  
+
+</script>
+
+</body>
